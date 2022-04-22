@@ -1,0 +1,16 @@
+
+1. Создан пользователь
+
+curl -X POST http://ec2-54-242-86-140.compute-1.amazonaws.com:6060/user/save -H 'Content-Type: application/json' -d '{"username":"Ringo", "password":"1234"}'
+
+2. Залогинимся и получим токен
+
+curl -X POST http://ec2-54-242-86-140.compute-1.amazonaws.com:6060/user/login -H 'Content-Type: application/json' -d '{"username":"Ringo","password":"1234"}'
+
+3. С выданным токеном в header'е отправим форму нового сообщения
+
+curl -X POST http://ec2-54-242-86-140.compute-1.amazonaws.com:6060/message/save -H 'Content-Type: application/json' -H 'Authorization: Bearer_eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbmRyZXkiLCJ1c2VybmFtZSI6IkFuZHJleSIsImlhdCI6MTY1MDU1ODAwOCwiZXhwIjoxNjUxMTU3OTQ4fQ.jzgPN7t6esT6-V58oLqY-ukx2h6x4FDI6ukrd4Q6I58' -d '{"name":"Ringo","message":"New message"}'
+
+4. Если укажем в json'е "message": "history 10", сервер выдаст нам последние 10 сообщений пользователя
+
+curl -X POST http://ec2-54-242-86-140.compute-1.amazonaws.com:6060/message/save -H 'Content-Type: application/json' -H 'Authorization: Bearer_eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbmRyZXkiLCJ1c2VybmFtZSI6IkFuZHJleSIsImlhdCI6MTY1MDU1ODAwOCwiZXhwIjoxNjUxMTU3OTQ4fQ.jzgPN7t6esT6-V58oLqY-ukx2h6x4FDI6ukrd4Q6I58' -d '{"name":"Ringo","message":"history 10"}'
