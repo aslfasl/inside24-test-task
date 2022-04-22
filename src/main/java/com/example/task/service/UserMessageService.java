@@ -1,6 +1,6 @@
 package com.example.task.service;
 
-import com.example.security.JwtTokenProvider;
+import com.example.task.security.JwtTokenProvider;
 import com.example.task.model.AppUser;
 import com.example.task.model.Message;
 import com.example.task.repository.MessageRepo;
