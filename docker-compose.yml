@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+  mysql-db:
+    image: 'mysql:5.7'
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=token_schema
+    ports:
+      - "3307:3306"
+
+  spring-app-container:
+    image: hukku/inside24-task:1.0
+    ports:
+      - "6060:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/token_schema?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "root"
+#    Uncomment lines below to run a program with Dockerfile, but change an image name first
+#    build:
+#      context: "./"
+#      dockerfile: "Dockerfile"
+    depends_on:
+      - mysql-db
