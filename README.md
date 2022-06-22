@@ -3,7 +3,7 @@ Build: passing
 
 Coverage: 93%
 
-The project is deployed on AWS instance: http://54.242.86.140:6060
+The project is deployed on AWS instance: http://54.242.86.140:6060 upd: the project was deployed on AWS instance, but it doesn't work now because of sanctions.
 
 ## Requirements
 
